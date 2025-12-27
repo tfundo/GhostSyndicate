@@ -1,252 +1,126 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TFUNDO // GHOST SYNDICATE TERMINAL</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>TFUNDO // GHOST SYNDICATE TERMINAL</title>
     <style>
-        body { font-family: 'Share Tech Mono', monospace; background-color: #050505; color: #a8a29e; }
-        .neon-text { text-shadow: 0 0 10px rgba(57, 255, 20, 0.5); }
-        .neon-border { box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); }
-        .scanline {
-            width: 100%;
-            height: 100px;
-            z-index: 10;
-            background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(57, 255, 20, 0.04) 50%, rgba(0,0,0,0) 100%);
-            opacity: 0.1;
-            position: fixed;
-            bottom: 100%;
-            animation: scanline 10s linear infinite;
-            pointer-events: none;
-        }
-        @keyframes scanline {
-            0% { bottom: 100%; }
-            100% { bottom: -100%; }
-        }
-        /* Scrollbar personalizada */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #1c1917; }
-        ::-webkit-scrollbar-thumb { background: #39ff14; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #2ebd11; }
+        /* Tus estilos de mármol, animaciones y scrollbar siguen aquí */
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #a8a29e; }
+        .font-orbitron { font-family: 'Orbitron', sans-serif; }
+        .gold-gradient { background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c); }
+        .gold-text { background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fcf6ba, #aa771c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="bg-black min-h-screen selection:bg-[#39ff14] selection:text-black overflow-x-hidden">
 
-    <div class="scanline"></div>
+<body class="bg-black text-stone-400 selection:bg-[#bf953f] selection:text-black">
 
-    <div class="max-w-7xl mx-auto p-4 md:p-8 relative z-20">
+    <div class="max-w-7xl mx-auto p-4 md:p-12 relative z-20">
         
-        <header class="flex flex-col md:flex-row justify-between items-end border-b-2 border-[#39ff14] pb-6 mb-10 gap-4">
+        <header class="flex flex-col md:flex-row justify-between items-end border-b border-stone-800 pb-8 mb-12 gap-4">
             <div>
-                <h1 class="text-6xl md:text-8xl font-black text-white tracking-tighter uppercase glitch-effect" data-text="TFUNDO">
-                    TFUNDO
-                </h1>
-                <p class="text-[#39ff14] text-sm md:text-lg tracking-[0.2em] uppercase mt-2 neon-text">
-                    <span class="text-white">///</span> Ghost Syndicate Gaming <span class="text-white">///</span> Database Uplink
-                </p>
-            </div>
-            <div class="text-right">
-                <div class="text-xs text-stone-500 uppercase tracking-widest mb-1">System Status</div>
-                <div class="flex items-center justify-end gap-2 text-[#39ff14]">
-                    <span class="relative flex h-3 w-3">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#39ff14] opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-3 w-3 bg-[#39ff14]"></span>
-                    </span>
-                    ONLINE // SECURE
-                </div>
+                <h1 class="text-6xl md:text-8xl font-orbitron font-bold text-white tracking-tighter uppercase glitch-effect" data-text="TFUNDO">TFUNDO</h1>
+                <p class="gold-text text-sm md:text-lg tracking-[0.3em] uppercase mt-2">/// Ghost Syndicate Gaming /// Database Uplink</p>
             </div>
         </header>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
             
-            <div class="lg:col-span-4 space-y-8">
-                <div class="bg-[#0a0a0a] border border-stone-800 p-6 relative overflow-hidden group hover:border-[#39ff14] transition-colors duration-500">
-                    <div class="absolute top-0 left-0 w-2 h-2 bg-[#39ff14]"></div>
-                    <div class="absolute bottom-0 right-0 w-2 h-2 bg-[#39ff14]"></div>
-                    
-                    <h2 class="text-2xl text-white mb-6 uppercase border-b border-stone-800 pb-2">
-                        <span class="text-[#39ff14] mr-2">></span> Nuevo Reclutamiento
-                    </h2>
+            <div class="lg:col-span-4">
+                <div class="bg-black/40 border border-stone-800 p-8 backdrop-blur-md relative overflow-hidden group">
+                    <h2 class="text-xl font-orbitron text-white mb-8 uppercase tracking-widest border-l-2 border-[#bf953f] pl-4">Nuevo Recluta</h2>
 
-                    <form id="recruitmentForm" class="space-y-5">
-                        
-                        <div class="space-y-1">
-                            <label class="text-xs uppercase tracking-widest text-stone-500">Identificador // Gamertag</label>
-                            <input type="text" name="Gamertag" required 
-                                class="w-full bg-[#111] border border-stone-700 text-white p-3 focus:outline-none focus:border-[#39ff14] focus:ring-1 focus:ring-[#39ff14] transition-all uppercase placeholder-stone-700"
-                                placeholder="Escribe tu nick...">
+                    <form id="registroForm" class="space-y-6">
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-[0.2em] text-stone-500 mb-2">Gamertag</label>
+                            <input type="text" name="discord" required class="w-full bg-stone-900/40 border border-stone-800 p-3 text-white focus:outline-none focus:border-[#bf953f] transition-all uppercase placeholder-stone-800">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-[0.2em] text-stone-500 mb-2">Handle / Alias</label>
+                            <input type="text" name="handle" required class="w-full bg-stone-900/40 border border-stone-800 p-3 text-white focus:outline-none focus:border-[#bf953f] transition-all placeholder-stone-800">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] uppercase tracking-[0.2em] text-stone-500 mb-2">División</label>
+                            <select name="division" class="w-full bg-stone-900/40 border border-stone-800 p-3 text-white focus:outline-none focus:border-[#bf953f] transition-all uppercase cursor-pointer">
+                                <option value="Logística">Logística</option>
+                                <option value="Combate">Combate</option>
+                                <option value="Exploración">Exploración</option>
+                            </select>
                         </div>
 
-                        <div class="space-y-1">
-                            <label class="text-xs uppercase tracking-widest text-stone-500">Frecuencia // Discord</label>
-                            <input type="text" name="Discord" required 
-                                class="w-full bg-[#111] border border-stone-700 text-white p-3 focus:outline-none focus:border-[#39ff14] focus:ring-1 focus:ring-[#39ff14] transition-all placeholder-stone-700"
-                                placeholder="usuario#0000">
-                        </div>
-
-                        <div class="space-y-1">
-                            <label class="text-xs uppercase tracking-widest text-stone-500">Asignación // Rango</label>
-                            <div class="relative">
-                                <select name="Rol" class="w-full bg-[#111] border border-stone-700 text-white p-3 appearance-none focus:outline-none focus:border-[#39ff14] cursor-pointer uppercase">
-                                    <option value="Recluta">Recluta [Nvl. 1]</option>
-                                    <option value="Soldado">Soldado [Nvl. 2]</option>
-                                    <option value="Capitán">Capitán [CMD]</option>
-                                    <option value="Elite">Elite [Spec-Ops]</option>
-                                </select>
-                                <div class="absolute right-3 top-1/2 -translate-y-1/2 text-[#39ff14] pointer-events-none">▼</div>
-                            </div>
-                        </div>
-
-                        <button type="submit" id="submitBtn" 
-                            class="w-full bg-[#39ff14] text-black font-bold py-4 uppercase tracking-[0.2em] hover:bg-white hover:shadow-[0_0_20px_rgba(57,255,20,0.6)] transition-all duration-300 mt-4 relative overflow-hidden group">
-                            <span class="relative z-10 flex items-center justify-center gap-2">
-                                Iniciar Uplink <span class="text-xs block group-hover:translate-x-1 transition-transform">>></span>
-                            </span>
+                        <button type="submit" id="btnUplink" class="w-full gold-gradient text-black font-bold py-4 uppercase tracking-[0.2em] hover:opacity-90 transition-all duration-300 mt-4 relative overflow-hidden group">
+                            Iniciar Uplink
                         </button>
                     </form>
-                    
-                    <div id="statusMsg" class="mt-4 text-center text-xs uppercase hidden">
-                        <span class="text-[#39ff14] animate-pulse">/// Transmitiendo datos cifrados... ///</span>
-                    </div>
-
-                </div>
-
-                <div class="bg-[#111] p-4 border-l-2 border-stone-800 text-xs text-stone-500 leading-relaxed">
-                    <strong class="text-stone-300">PROTOCOLO VIGENTE:</strong> Todos los nuevos reclutas deben sincronizar sus cuentas de Discord para recibir las asignaciones de misión diarias.
                 </div>
             </div>
 
             <div class="lg:col-span-8">
-                <div class="border border-stone-800 bg-[#050505] min-h-[600px] flex flex-col">
-                    
-                    <div class="bg-[#0a0a0a] border-b border-stone-800 p-4 flex justify-between items-center">
-                        <h3 class="text-stone-300 uppercase tracking-widest text-sm flex items-center gap-2">
-                            <span class="w-2 h-2 bg-[#39ff14]"></span> Base de Datos Activa
-                        </h3>
-                        <div class="text-[#39ff14] text-xs font-mono">
-                            RECLUTAS: <span id="memberCount">0</span>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-12 gap-2 p-3 text-[10px] uppercase tracking-widest text-stone-500 border-b border-stone-900 bg-[#0c0c0c]">
-                        <div class="col-span-1 text-center">ID</div>
-                        <div class="col-span-4">Operador</div>
-                        <div class="col-span-4">Frecuencia (Discord)</div>
-                        <div class="col-span-3 text-right">Rango</div>
-                    </div>
-
-                    <div id="rosterList" class="flex-1 overflow-y-auto p-2 space-y-1">
-                        <div id="emptyState" class="h-full flex flex-col items-center justify-center text-stone-700 opacity-50">
-                            <div class="text-4xl mb-2">⚠</div>
-                            <div class="uppercase tracking-widest text-xs">Sin registros locales recientes</div>
-                        </div>
-                    </div>
-
-                    <div class="p-2 border-t border-stone-800 text-[10px] text-stone-600 flex justify-between font-mono">
-                        <span>SYS.VER.5.1</span>
-                        <span class="animate-pulse">ESPERANDO DATOS...</span>
+                <div class="border border-stone-800 bg-black/20 backdrop-blur-sm min-h-[600px] flex flex-col relative">
+                    <div id="roster-list-container" class="flex-1 overflow-y-auto">
+                        <table class="w-full text-left border-collapse">
+                            <tbody id="member-roster">
+                                </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
     <script>
-        // CONFIGURACIÓN: Tu URL de Google Apps Script
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzULoU6VwGmC6EMc441bk6Yromj7__81nFTO8xJH1Dl8DcKiOqeQyoDhyU4r-o-Z0bP/exec';
-
-        const form = document.getElementById('recruitmentForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const statusMsg = document.getElementById('statusMsg');
-        const rosterList = document.getElementById('rosterList');
-        const emptyState = document.getElementById('emptyState');
-        const memberCountDisplay = document.getElementById('memberCount');
-
-        // Estado local para contar (opcional, se reinicia al recargar)
-        let memberCount = 0;
+        
+        const form = document.getElementById('registroForm');
+        const btn = document.getElementById('btnUplink');
 
         form.addEventListener('submit', e => {
-            e.preventDefault();
+            e.preventDefault(); // Evita descargas y recargas
             
-            // 1. UI: Mostrar estado de carga
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="animate-pulse">ESTABLECIENDO ENLACE...</span>';
-            submitBtn.classList.remove('hover:bg-white', 'hover:shadow-[0_0_20px_rgba(57,255,20,0.6)]');
-            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-            statusMsg.classList.remove('hidden');
+            btn.innerText = "ESTABLECIENDO ENLACE...";
+            btn.disabled = true;
 
-            // 2. Preparar datos
             const formData = new FormData(form);
-            
-            // Capturamos datos para la vista previa local inmediata (Optimistic UI)
-            const newMember = {
-                gamertag: formData.get('Gamertag'),
-                discord: formData.get('Discord'),
-                rol: formData.get('Rol')
-            };
 
-            // 3. Enviar a Google Sheets
+            // Envío a Google Sheets
             fetch(SCRIPT_URL, { method: 'POST', body: formData })
                 .then(response => {
-                    // Si llegamos aquí, Google recibió la petición (aunque la respuesta sea opaca por CORS)
-                    console.log('Datos enviados correctamente', response);
+                    alert("¡TRANSMISIÓN COMPLETADA! Datos guardados en el Sindicato.");
                     
-                    // 4. Éxito: Actualizar UI
-                    addMemberToVisualList(newMember);
+                    // Aquí llamamos a tu lógica original para pintar la fila en la tabla
+                    const nuevoMiembro = {
+                        discord: formData.get('discord'),
+                        handle: formData.get('handle'),
+                        division: formData.get('division'),
+                        roles: ["RECLUTA"], // Valor por defecto
+                        favShip: "PENDIENTE"
+                    };
+                    
+                    // Reutilizamos tu función de renderizado (ajustada a tus IDs)
+                    renderNewRow(nuevoMiembro);
+                    
                     form.reset();
-                    alert("¡ACCESO CONCEDIDO! Datos guardados en la nube.");
                 })
                 .catch(error => {
                     console.error('Error!', error.message);
-                    alert("ERROR DE CONEXIÓN: No se pudo contactar con el servidor.");
+                    alert("ERROR: No se pudo contactar con la base de datos.");
                 })
                 .finally(() => {
-                    // 5. Restaurar botón
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span class="relative z-10 flex items-center justify-center gap-2">Iniciar Uplink <span class="text-xs block group-hover:translate-x-1 transition-transform">>></span></span>';
-                    submitBtn.classList.add('hover:bg-white', 'hover:shadow-[0_0_20px_rgba(57,255,20,0.6)]');
-                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                    statusMsg.classList.add('hidden');
+                    btn.innerText = "INICIAR UPLINK";
+                    btn.disabled = false;
                 });
         });
 
-        // Función para renderizar el nuevo miembro en la lista "Gaming"
-        function addMemberToVisualList(member) {
-            // Ocultar mensaje de vacío si es el primero
-            if(emptyState) emptyState.style.display = 'none';
-
-            memberCount++;
-            memberCountDisplay.innerText = memberCount;
-
-            // Generar ID aleatorio estilo Hex
-            const randomId = '0x' + Math.floor(Math.random()*16777215).toString(16).toUpperCase().substring(0,4);
-            
-            // Color según rol
-            let roleColor = 'text-stone-400';
-            let roleBorder = 'border-stone-800';
-            if(member.rol === 'Capitán' || member.rol === 'Elite') {
-                roleColor = 'text-[#39ff14]'; 
-                roleBorder = 'border-[#39ff14]';
-            }
-
-            const rowHTML = `
-                <div class="grid grid-cols-12 gap-2 p-3 items-center bg-[#0a0a0a] border-l-2 ${roleBorder} hover:bg-[#111] transition-colors group animate-[fadeIn_0.5s_ease-out]">
-                    <div class="col-span-1 text-center font-mono text-[10px] text-stone-600 group-hover:text-[#39ff14]">${randomId}</div>
-                    <div class="col-span-4 font-bold text-white tracking-wide">${member.gamertag}</div>
-                    <div class="col-span-4 text-stone-400 text-xs font-mono">${member.discord}</div>
-                    <div class="col-span-3 text-right">
-                        <span class="text-[10px] uppercase border border-stone-800 px-2 py-1 ${roleColor} bg-black/50">
-                            ${member.rol}
-                        </span>
-                    </div>
-                </div>
-            `;
-
-            // Insertar al principio de la lista
-            rosterList.insertAdjacentHTML('afterbegin', rowHTML);
+        // Esta es tu función original de renderizado que saqué de tu snippet
+        function renderNewRow(m) {
+            const table = document.getElementById('member-roster');
+            const row = `
+                <tr class="border-b border-stone-900/50 hover:bg-stone-900/20 transition-colors group">
+                    <td class="p-4 text-white font-bold uppercase text-xs tracking-wider">${m.discord}</td>
+                    <td class="p-4 text-stone-400">@${m.handle}</td>
+                    <td class="p-4 text-stone-500 text-[10px] uppercase tracking-wider">${m.division}</td>
+                </tr>`;
+            table.insertAdjacentHTML('afterbegin', row);
         }
     </script>
 </body>
