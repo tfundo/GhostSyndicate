@@ -1295,7 +1295,41 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
         document.getElementById('empty-roster-msg').classList.toggle('hidden', c > 0);
     }
     function updateCounts() { document.getElementById('member-count').innerText = db.members.length; }
+async function syncDB() {
+        const btn = document.getElementById('sync-btn');
+        const status = document.getElementById('sync-status');
+       
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzULoU6VwGmC6EMc441bk6Yromj7__81nFTO8xJH1Dl8DcKiOqeQyoDhyU4r-o-Z0bP/exec'; 
+        
+        btn.disabled = true;
+        status.className = 'text-xs text-amber-500 animate-pulse';
+        status.innerText = 'ESTABLISHED CONNECTION...';
 
+        try {
+            const response = await fetch(scriptURL);
+            const data = await response.json();
+            
+            if (data && data.length > 0) {
+                db.members = data;
+                displayRoster();
+                status.className = 'text-xs text-green-500';
+                status.innerText = 'SYNC COMPLETE';
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            status.className = 'text-xs text-red-500';
+            status.innerText = 'CONNECTION FAILED';
+        } finally {
+            setTimeout(() => {
+                btn.disabled = false;
+                if(status.innerText !== 'CONNECTION FAILED') status.innerText = '';
+            }, 3000);
+        }
+    }
+
+    // Vinculamos el botón al hacer clic
+    document.getElementById('sync-btn').addEventListener('click', syncDB);
+ 
 </script>
 
 
